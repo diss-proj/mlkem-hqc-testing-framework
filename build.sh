@@ -14,7 +14,7 @@ mkdir _build/oqs-provider
 LIBOQS_REALPATH=$(realpath _build/liboqs)
 
 echo "Cloning Liboqs..."
-git clone https://github.com/diss-proj/liboqs ./_build/liboqs -b main --single-branch
+git clone https://github.com/diss-proj/liboqs ./_build/liboqs -b modifications --single-branch
 
 echo "Building Liboqs..."
 cd _build/liboqs
