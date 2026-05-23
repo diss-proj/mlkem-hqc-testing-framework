@@ -12,7 +12,7 @@ echo 'Done.'
 
 echo 'Disabling hyperthreading...'
 echo 'off' | sudo tee /sys/devices/system/cpu/smt/control
-if ["$(cat /sys/devices/system/cpu/smt/active)" != "off"]; then
+if [ "$(cat /sys/devices/system/cpu/smt/active)" != "0" ]; then
     echo 'Error! Failed to disable SMT'
 else
     echo 'Done.'
