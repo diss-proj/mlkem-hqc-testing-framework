@@ -63,8 +63,11 @@ echo "testing oqs-provider"
 
 echo "project root: $PROJECT_ROOT"
 
-#cd $PROJECT_ROOT/_build/oqs-provider
+cd $PROJECT_ROOT/_build/oqs-provider
 
-#source scripts/runtests.sh
+echo "wd: $(pwd)"
+echo "ls: $(ls)"
 
-#echo "Build completed. Libraries are in ./_build/"
+source scripts/runtests.sh
+
+echo "Build completed. Libraries are in ./_build/"

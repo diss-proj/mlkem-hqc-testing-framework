@@ -16,6 +16,7 @@ if ["$(cat /sys/devices/system/cpu/smt/active)" != "off"]; then
     echo 'Error! Failed to disable SMT'
 else
     echo 'Done.'
+fi
 
 
 echo 'Verify output:'
