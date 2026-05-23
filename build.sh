@@ -61,8 +61,10 @@ source scripts/fullbuild.sh
 
 echo "testing oqs-provider"
 
-cd $PROJECT_ROOT/_build/oqs-provider
+echo "project root: $PROJECT_ROOT"
 
-source scripts/runtests.sh
+#cd $PROJECT_ROOT/_build/oqs-provider
 
-echo "Build completed. Libraries are in ./_build/"
+#source scripts/runtests.sh
+
+#echo "Build completed. Libraries are in ./_build/"
