@@ -1,0 +1,3 @@
+[submodule "tls-benchmark-suite"]
+	path = tls-benchmark-suite
+	url = https://github.com/diss-proj/tls-kem-benchmark
