@@ -61,6 +61,8 @@ source scripts/fullbuild.sh
 
 echo "testing oqs-provider"
 
+sleep 1
+
 echo "project root: $PROJECT_ROOT"
 
 cd $PROJECT_ROOT/_build/oqs-provider

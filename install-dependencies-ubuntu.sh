@@ -5,4 +5,5 @@
 sudo apt update
 
 # Liboqs dependencies
-sudo apt install astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz python3-yaml valgrind
+sudo apt install astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist unzip xsltproc doxygen graphviz python3-yaml valgrind \
+stress-ng python3-tqdm python3-pandas
