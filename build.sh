@@ -57,6 +57,7 @@ liboqs_DIR="$LIBOQS_REALPATH/build"
 OPENSSL_BRANCH="openssl-3.4.5"
 
 CMAKE_PARAMS="-DCMAKE_PREFIX_PATH='$LIBOQS_REALPATH/build/src'"
+OSSL_CONFIG='-DOPENSSL_TLS_SECURITY_LEVEL=0'
 source scripts/fullbuild.sh
 
 echo "testing oqs-provider"
@@ -67,9 +68,8 @@ echo "project root: $PROJECT_ROOT"
 
 cd $PROJECT_ROOT/_build/oqs-provider
 
-echo "wd: $(pwd)"
-echo "ls: $(ls)"
-
+OPENSSL_CONF=/home/diss/mlkem-hqc-testing-framework/_build/oqs-provider/scripts/openssl-ca.cnf
+OPENSSL_MODULES=/home/diss/mlkem-hqc-testing-framework/_build/oqs-provider/_build/lib
 source scripts/runtests.sh
 
 echo "Build completed. Libraries are in ./_build/"
