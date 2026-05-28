@@ -13,7 +13,7 @@ KEMS = [
     'ML-KEM-512', 'ML-KEM-768', 'ML-KEM-1024'
 ]
 TEST_TIMESTAMP = datetime.now(timezone.utc).strftime("%G-%m-%d-%H:%M:%S:%f")
-SPEEDTEST_DURATION = 30
+SPEED_TEST_DURATION = 30
 
 ###### Check Environment
 #if os.geteuid() != 0:
