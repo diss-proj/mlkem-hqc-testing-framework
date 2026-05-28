@@ -1,31 +1,18 @@
-Automated testing framework to benchmark and analyse the performance
-of ML-KEM vs HQC v5.0.0 for TLS 1.3 handshakes.
+# HQC v5 vs ML-KEM Benchmarking Framework
 
-Consists of 5 major components:
-1. Automatic Build Script
-2. KEM Resource Usage Test Suite
-3. TLS 1.3 Handshake Test Suite
-4. Statistical Analysis Suite
-5. Report/Presentation Suite
+This project consists of two major components. 
+1. The resource test suite in 
+    in `resource-test-suite` analyses the computational cost and memory
+    usage of each KEM via `liboqs`.
+2. The TLS handshake benchmark in `tls-benchmark-suite` runs an
+extensive set of tests to determine how each KEM performs for key exchange.
 
-## Pre-Requisites
-Building and running these benchmarks requires at least the following
-dependencies:
-```
-astyle cmake gcc ninja-build libssl-dev python3-pytest python3-pytest-xdist
-unzip xsltproc doxygen graphviz python3-yaml valgrind
-```
+## Conducting the tests
+Each test suite has specific build configuration steps and instructions,
+please see the `README.md` file in each suite's directory.
 
-This framework was designed and tested on Ubuntu LTS 2026.04, and includes
-a script to install all necessary dependencies on Ubuntu:
-`install-dependencies-ubuntu`
-
-## 1. Building OpenSSL
-`build.sh` builds OpenSSL 3.4.5, `oqs-provider` and `liboqs`
-in `./_build/` for use by the test suites. A couple of key notes:
-- Running `build.sh` again **deletes** `./_build` and re-builds the stack 
-from source.
-- The build process can be **very long**, especially on resource-limited
-platforms.
-- Liboqs is built **with all platform-specific optimizations disabled**,
-including very common ones like AVX2.
+## Preparing the test server
+Both tests should be conducted on a test server with runtime performance
+optimization features like turbo boost disabled. The process to achieve
+this is platform-specific, some example
+scripts can be found in `./test-server-scripts/`

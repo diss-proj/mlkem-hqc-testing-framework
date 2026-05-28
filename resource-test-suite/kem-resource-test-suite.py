@@ -13,6 +13,7 @@ KEMS = [
     'ML-KEM-512', 'ML-KEM-768', 'ML-KEM-1024'
 ]
 TEST_TIMESTAMP = datetime.now(timezone.utc).strftime("%G-%m-%d-%H:%M:%S:%f")
+SPEEDTEST_DURATION = 30
 
 ###### Check Environment
 #if os.geteuid() != 0:
@@ -38,20 +39,12 @@ os.makedirs(RESULTS_PATH)
 # To ensure that earlier KEMs don't run faster because the CPU hasn't 
 # thermal throttled yet, it's important to "warm up" the CPU.
 
-CPU_COUNT = os.sched_getaffinity(0)
+CPU_COUNT = os.cpu_count()
 
-#print("# Warming up the CPU")
-#with tqdm(
-#    total=60, 
-#    desc="Running CPU stressors...", 
-#    unit="s", 
-#    bar_format=TIMER_FORMAT) as pbar:
-#    #subprocess.run(f"stress-ng --cpu {CPU_COUNT} --timeout 60")
-#    for i in range(60):
-#        sleep(1)
-#        pbar.update(1)
+print("# Warming up the CPU")
+subprocess.run(["stress-ng", "--cpu", f"{CPU_COUNT}", "--timeout", "60"])
 
-### Storing the results
+### To store the results
 speed_results_dict = {
     "KEM": [],
     "KeyGen Cost Mean": [],
@@ -109,7 +102,7 @@ with tqdm(KEMS,
     for KEM in pbar:
         pbar.set_description(f"Testing {KEM}")
         result = subprocess.run(
-            ["./_build/liboqs/build/tests/speed_kem", "-d", "1", KEM],
+            ["./_build/liboqs/build/tests/speed_kem", "-d", f"{SPEED_TEST_DURATION}", KEM],
             capture_output=True
         )
         store_speedtest_results(KEM, result.stdout.decode())
