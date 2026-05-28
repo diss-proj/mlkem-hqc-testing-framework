@@ -16,3 +16,8 @@ Both tests should be conducted on a test server with runtime performance
 optimization features like turbo boost disabled. The process to achieve
 this is platform-specific, some example
 scripts can be found in `./test-server-scripts/`
+
+## git submodule
+The TLS handshake test framework is stored in a seperate git repository
+and imported as a submodule. When you clone this repository, run
+`git submodule update --init` to download it.
